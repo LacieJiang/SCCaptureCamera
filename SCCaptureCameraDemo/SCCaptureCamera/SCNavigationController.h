@@ -26,8 +26,8 @@
 @optional
 - (BOOL)willDismissNavigationController:(SCNavigationController *)navigatonController;
 
-- (void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage*)image;
+- (void)didTakePicture:(SCNavigationController *)navigationController image:(UIImage *)image;
 
-- (void)showAlbum:(SCNavigationController *)navigationController;
+- (void)didSelectPicture:(SCNavigationController *)navigationController image:(UIImage *)image;
 
 @end

@@ -277,15 +277,11 @@
 }
 
 - (void)showAlbum {
-  SCNavigationController *nav = (SCNavigationController*)self.navigationController;
-  if ([nav.scNaigationDelegate respondsToSelector:@selector(showAlbum:)]) {
-    [nav.scNaigationDelegate showAlbum:nav];
-  }
-//  UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//  picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//  picker.allowsEditing = YES;
-//  picker.delegate = self;
-//  [self presentViewController:picker animated:YES completion:nil];
+  UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+  picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  picker.allowsEditing = NO;
+  picker.delegate = self;
+  [self presentViewController:picker animated:YES completion:nil];
 }
 //菜单栏上的按钮
 - (void)addMenuViewButtons {
@@ -703,8 +699,8 @@ void c_slideAlpha() {
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
   [picker dismissViewControllerAnimated:YES completion:nil];
   SCNavigationController *nav = (SCNavigationController*)self.navigationController;
-  if ([nav.scNaigationDelegate respondsToSelector:@selector(didTakePicture:image:)]) {
-    [nav.scNaigationDelegate didTakePicture:nav image:[info objectForKey:UIImagePickerControllerEditedImage]];
+  if ([nav.scNaigationDelegate respondsToSelector:@selector(didSelectPicture:image:)]) {
+    [nav.scNaigationDelegate didSelectPicture:nav image:[info objectForKey:UIImagePickerControllerOriginalImage]];
   }
 }
 
